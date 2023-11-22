@@ -143,24 +143,16 @@ const styles = StyleSheet.create({
     // configurações do modal
     centeredView: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         marginTop: 22,
     },
     modalView: {
-        margin: 20,
-        backgroundColor: 'white',
+        margin: 0,
+        backgroundColor: '#232323',
         borderRadius: 20,
         padding: 35,
         alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
     },
     button: {
         borderRadius: 20,
