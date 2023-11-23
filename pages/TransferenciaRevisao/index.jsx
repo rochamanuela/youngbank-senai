@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Modal } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, TouchableOpacity, Modal, Image } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,8 +9,33 @@ import LocalButton from "../../components/LocalButton";
 import styles from "./styles";
 
 export default function TransferenciaRevisao({ navigation }) {
-
     const [modalVisible, setModalVisible] = useState(false);
+    const [modal2Visible, setModal2Visible] = useState(false);
+
+    useEffect(() => {
+        let timer;
+        if (modal2Visible) {
+            timer = setTimeout(() => {
+                navigation.navigate('TransferenciaComprovante');
+            }, 5000);
+        }
+        return () => clearTimeout(timer);
+    }, [modal2Visible]);
+
+
+    const abrirModal = () => {
+        setModalVisible(!modalVisible);
+    };
+
+    const abrirModal2 = () => {
+        setModal2Visible(true);
+    };
+
+    const handlePress = () => {
+        abrirModal();
+        abrirModal2();
+    };
+
     const voltar = () => {
         navigation.navigate('TransferenciaInicial');
     };
@@ -94,21 +119,42 @@ export default function TransferenciaRevisao({ navigation }) {
 
 
             <Modal
-                animationType="slide"
+                animationType="fade"
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
                     setModalVisible(!modalVisible);
                 }}>
+
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Clique em confirmar para autenticar sua transação</Text>
-                        <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}>
-                            <Text style={styles.textStyle}>Confirmar</Text>
-                        </TouchableOpacity>
+                        <Text style={styles.textSmall}>Clique em confirmar para autenticar sua transação</Text>
+                        <View style={styles.btnContainer}>
+                            <LocalButton
+                                text="Confirmar"
+                                onPress={handlePress}
+                            />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={modal2Visible}
+                onRequestClose={() => {
+                    setModal2Visible(!modal2Visible);
+                }}>
+
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Image
+                            source={require("../../assets/images/loading.gif")}
+                            style={styles.modalImage}
+                        />
+                        <Text style={styles.textMedium2}>Processando transferência</Text>
+                        <Text style={styles.textSmall}>Aguarde enquanto a transação é processsada</Text>
                     </View>
                 </View>
             </Modal>

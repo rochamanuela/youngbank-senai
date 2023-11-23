@@ -33,6 +33,13 @@ const styles = StyleSheet.create({
         fontFamily: 'medium',
         marginBottom: 10
     },
+    textMedium2: {
+        color: '#fff',
+        fontSize: 14,
+        fontFamily: 'medium',
+        marginBottom: -15,
+        marginTop: -15
+    },
     textSmall: {
         color: '#fff',
         fontSize: 12,
@@ -145,34 +152,26 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        marginTop: 22,
+        backgroundColor: 'rgba(0, 0, 0, 0.65)'
     },
     modalView: {
         margin: 0,
         backgroundColor: '#232323',
         borderRadius: 20,
-        padding: 35,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+        width: '100%',
+        height: 240,
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: 25
     },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
+    btnContainer: {
+        width: '83%'
     },
-    buttonOpen: {
-        backgroundColor: '#F194FF',
-    },
-    buttonClose: {
-        backgroundColor: '#2196F3',
-    },
-    textStyle: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: 'center',
+    modalImage: {
+        width: 85,
+        height: 85,
     },
 });
 

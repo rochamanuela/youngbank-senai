@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    // configurações gerais
     container: {
         flex: 1,
         backgroundColor: '#121212',
@@ -8,13 +9,9 @@ const styles = StyleSheet.create({
     },
     containerChild: {
         flex: 1,
-        height: '94%',
-        backgroundColor: '#232323',
+        height: '100%',
+        backgroundColor: '#121212',
         padding: '7.5%',
-        paddingTop: '12%',
-        alignSelf: 'flex-end',
-        borderTopRightRadius: 30,
-        borderTopLeftRadius: 30,
     },
     header: {
         display: 'flex',
@@ -29,10 +26,19 @@ const styles = StyleSheet.create({
         gap: 0
     },
 
-    textRegular: {
+    // configurações de textos
+    textMedium: {
         color: '#fff',
         fontSize: 14,
-        fontFamily: 'regular'
+        fontFamily: 'medium',
+        marginBottom: 10
+    },
+    textMedium2: {
+        color: '#fff',
+        fontSize: 14,
+        fontFamily: 'medium',
+        marginBottom: -15,
+        marginTop: -15
     },
     textSmall: {
         color: '#fff',
@@ -44,15 +50,48 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'bold',
     },
-    textMedium: {
+    textSmall3: {
+        color: '#fff',
+        fontSize: 11,
+        fontFamily: 'regular',
+        lineHeight: 18,
+    },
+    textSmallBold: {
+        color: '#fff',
+        fontSize: 12,
+        fontFamily: 'medium',
+        marginBottom: 0
+    },
+    textSmallGray: {
+        color: '#B1B1B1',
+        fontSize: 12,
+        fontFamily: 'regular',
+    },
+    textSmallPurple: {
+        color: '#C77DFF',
+        fontSize: 12,
+        fontFamily: 'regular',
+    },
+    textHeader: {
         color: '#fff',
         fontSize: 14,
         fontFamily: 'regular',
+    },
+    textCamuflado: {
+        color: '#121212',
+        fontSize: 14,
+        fontFamily: 'regular',
+    },
+    textValue: {
+        color: '#fff',
+        textAlign: 'center',
+        fontFamily: 'medium',
+        fontSize: 32,
         marginTop: 25,
-        marginBottom: 10,
+        marginBottom: 8
     },
 
-
+    // configurações específicas de containers de views
     checkBoxContainer: {
         backgroundColor: 'transparent',
         borderWidth: 0,
@@ -60,29 +99,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 20
     },
-    checkBoxText: {
-        color: '#fff',
-        fontSize: 12,
-        fontFamily: 'regular',
-        fontWeight: 400
-    },
-
-    inputValue: {
-        height: 65,
-        width: 175,
-        borderBottomColor: '#fff',
-        borderColor: 'transparent',
-        borderWidth: 2,
-        paddingBottom: 14,
-        marginBottom: 12,
-        borderRadius: 0,
-        fontSize: 30,
-        color: '#fff',
-        textAlign: 'center',
-        fontFamily: 'regular'
+    valorTransferencia: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     containerSaldo: {
-        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -91,18 +112,67 @@ const styles = StyleSheet.create({
         padding: 14,
         borderColor: '#fff',
         borderWidth: 1,
-        borderRadius: 8
+        borderRadius: 8,
+        backgroundColor: '#232323',
+        marginTop: 16
+    },
+    containerAviso: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderRadius: 5,
+        height: 'auto',
+        padding: 15,
+        marginBottom: 25,
+        backgroundColor: 'rgba(238, 162, 67, 0.30)',
+        gap: 13
     },
     right: {
         display: 'flex',
         flexDirection: 'row',
         gap: 10
     },
-    valorTransferencia: {
-        flex: 0.6,
-        justifyContent: 'center',
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 15
+    },
+    row2: {
+        flexDirection: 'row',
+        gap: 13,
         alignItems: 'center'
-    }
+    },
+    line: {
+        borderBottomColor: '#282828',
+        borderBottomWidth: 2,
+        marginVertical: 25,
+    },
+
+    // configurações do modal
+    centeredView: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.65)'
+    },
+    modalView: {
+        margin: 0,
+        backgroundColor: '#232323',
+        borderRadius: 20,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+        width: '100%',
+        height: 240,
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 25
+    },
+    btnContainer: {
+        width: '83%'
+    },
+    modalImage: {
+        width: 85,
+        height: 85,
+    },
 });
 
 export default styles;

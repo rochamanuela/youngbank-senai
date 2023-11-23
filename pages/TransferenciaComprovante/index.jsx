@@ -1,73 +1,80 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Text, View, Image, ImageBackground, TouchableOpacity, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, TouchableOpacity, Modal, Image } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import LocalButton from "../../components/LocalButton";
-import LocalInput from "../../components/LocalInput";
 
 import styles from "./styles";
 
 export default function TransferenciaComprovante({ navigation }) {
-    const cancel = () => {
-        navigation.navigate('Home');
+    const voltar = () => {
+        navigation.navigate('TransferenciaInicial');
     };
-
-    const [checked, setChecked] = useState(false);
-
-    // campos de informações pessoais
-    const [chave, setChave] = useState('')
-    const [dataNascimento, setDataNascimento] = useState('')
 
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
-                <TouchableOpacity onPress={cancel} style={{ width: 30 }}>
-                    <MaterialCommunityIcons name="close" size={30} color="#fff" />
-                </TouchableOpacity>
-
-                <Text style={styles.textMedium}>Chave</Text>
-
-                {/*Campo para o inserir a chave da conta de destino*/}
-                <LocalInput
-                    placeholderText="CPF, CNPJ, celular, e-mail ou aleatória"
-                    onChangeText={(e) => setChave(e)}
-                />
-
-                <View style={styles.containerSaldo}>
-                    <Text style={styles.textSmall}>Saldo em conta</Text>
-                    <View style={styles.right}>
-                        <Text style={styles.textSmall2}>R$ 1.300,00</Text>
-                        <Feather name="eye-off" size={15} color="#969696" />
-                    </View>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={voltar} style={{ width: 30 }}>
+                        <MaterialCommunityIcons name="arrow-left" size={25} color="#fff" />
+                    </TouchableOpacity>
+                    <Text style={styles.textHeader}>Comprovante</Text>
+                    <Text style={styles.textCamuflado}>A</Text>
                 </View>
 
                 <View style={styles.valorTransferencia}>
-                    <TextInput
-                        style={styles.inputValue}
-                        defaultValue="R$ 0,00"
-                    />
-                    <Text style={styles.textSmall}>Transferir para</Text>
-                    <Text style={styles.textSmall}>Eliana Rocha</Text>
+                    <Text style={styles.textValue}>R$ 150,00</Text>
                 </View>
 
+                <View style={styles.line} />
+
                 <View>
-                    <TouchableOpacity style={{width: 48, alignSelf: 'flex-end'}} >
-                        <LinearGradient
-                            colors={['#EEA243', '#C77DFF']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={{
-                                padding: 10,
-                                alignItems: 'center',
-                                borderRadius: 50,
-                            }}
-                        >
-                            <Feather name="arrow-right" size={25} color="#000" />
-                        </LinearGradient>
-                    </TouchableOpacity>
+                    <Text style={styles.textMedium}>Dados de quem recebeu</Text>
+
+                    <View style={styles.row}>
+                        <Text style={styles.textSmallGray}>Nome</Text>
+                        <Text style={styles.textSmall2}>Eliana Rocha de Souza</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.textSmallGray}>CPF/CNPJ</Text>
+                        <Text style={styles.textSmall2}>***.487.798-**</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.textSmallGray}>Instituição</Text>
+                        <Text style={styles.textSmall2}>NuBank</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.textSmallGray}>Chave de email</Text>
+                        <Text style={styles.textSmall2}>eliana@gmail.com</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.textSmallPurple}>Adicionar mensagem</Text>
+                    </View>
+                </View>
+
+                <View style={styles.line} />
+
+                <View style={styles.row2}>
+                    <Feather name="heart" size={24} color="#C77DFF" />
+                    <Text style={styles.textSmallBold}>Salvar como favorito</Text>
+                </View>
+
+                <View style={styles.line} />
+
+                <View style={styles.final}>
+                    <LocalButton
+                        text="Compartilhar comprovante"
+                        onPress={voltar}
+                    />
+                    <LocalButton
+                        text="Realizar nova transferência"
+                        style = {{
+                            backgroundColor: 'red'
+                        }}
+                        onPress={voltar}
+                    />
                 </View>
             </View>
         </View>
