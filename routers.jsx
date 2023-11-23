@@ -12,6 +12,8 @@ import TransferenciaInicial from './pages/TransferenciaInicial';
 import TransferenciaRevisao from './pages/TransferenciaRevisao';
 import TransferenciaComprovante from './pages/TransferenciaComprovante';
 
+import Teste from './pages/Teste';
+
 const Telas = createNativeStackNavigator();
 
 export default function Routers() {
@@ -19,22 +21,29 @@ export default function Routers() {
         <NavigationContainer>
             <Telas.Navigator>
                 <Telas.Screen
-                    name="TransferenciaRevisao"
-                    component={TransferenciaRevisao}
+                    name="Teste"
+                    component={Teste}
                     options={{ headerShown: false }}
                 />
+
                 <Telas.Screen
                     name="TransferenciaInicial"
                     component={TransferenciaInicial}
                     options={{ headerShown: false }}
                 />
 
-
                 <Telas.Screen
                     name="TransferenciaComprovante"
                     component={TransferenciaComprovante}
                     options={{ headerShown: false }}
                 />
+
+                <Telas.Screen
+                    name="TransferenciaRevisao"
+                    component={TransferenciaRevisao}
+                    options={{ headerShown: false }}
+                />
+
 
                 <Telas.Screen
                     name="MensagemCadastro"

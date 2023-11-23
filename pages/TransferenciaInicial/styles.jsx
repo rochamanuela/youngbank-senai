@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
 
-
     checkBoxContainer: {
         backgroundColor: 'transparent',
         borderWidth: 0,
@@ -71,8 +70,7 @@ const styles = StyleSheet.create({
         height: 65,
         width: 175,
         borderBottomColor: '#fff',
-        borderColor: 'transparent',
-        borderWidth: 2,
+        borderBottomWidth: 2,
         paddingBottom: 14,
         marginBottom: 12,
         borderRadius: 0,
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
         gap: 10
     },
     valorTransferencia: {
-        flex: 0.6,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     }

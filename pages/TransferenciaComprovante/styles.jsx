@@ -18,12 +18,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
-        justifyContent: 'space-between'
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
         gap: 0
+    },
+    green: {
+        width: 50,
+        height: 50,
+        marginTop: 20,
+        marginBottom: 15,
+        backgroundColor: '#319B68',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30
     },
 
     // configurações de textos
@@ -76,6 +85,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         fontFamily: 'regular',
+        marginLeft: '27%',
     },
     textCamuflado: {
         color: '#121212',
@@ -87,7 +97,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'medium',
         fontSize: 32,
-        marginTop: 25,
+        marginTop: 0,
         marginBottom: 8
     },
 
@@ -146,33 +156,19 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         marginVertical: 25,
     },
+    final: {
+        marginTop: 25,
+        gap: 15
+    },
 
-    // configurações do modal
-    centeredView: {
-        flex: 1,
-        justifyContent: 'flex-end',
+    // configurações do btn secundário
+    btnSecondary: {
+        padding: 15,
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.65)'
-    },
-    modalView: {
-        margin: 0,
-        backgroundColor: '#232323',
-        borderRadius: 20,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-        width: '100%',
-        height: 240,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 25
-    },
-    btnContainer: {
-        width: '83%'
-    },
-    modalImage: {
-        width: 85,
-        height: 85,
-    },
+        borderRadius: 7,
+        borderColor: '#fff',
+        borderWidth: 1
+    }
 });
 
 export default styles;
