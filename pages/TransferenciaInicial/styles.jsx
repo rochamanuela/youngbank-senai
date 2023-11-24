@@ -100,6 +100,24 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+
+    // estilos do saldo
+    saldoContainer: {
+        width: 'auto',
+        height: 'auto'
+    },
+    saldoOcultoContainer: {
+        width: 80,
+        height: 'auto',
+        marginRight: 5,
+        backgroundColor: '#2E2E2E',
+        borderRadius: 4
+    },
+    saldoOcultoTexto: {
+        color: '#fff',
+        fontSize: 12,
+        fontFamily: 'bold',
     }
 });
 

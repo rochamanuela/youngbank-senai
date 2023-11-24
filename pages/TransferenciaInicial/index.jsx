@@ -20,6 +20,12 @@ export default function TransferenciaInicial({ navigation }) {
     const [chave, setChave] = useState('')
     const [valor, setValor] = useState('')
 
+    // mostrar e ocultar o saldo
+    const [mostrarSaldo, setMostrarSaldo] = useState(true);
+    const toggleSaldo = () => {
+        setMostrarSaldo(!mostrarSaldo);
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
@@ -35,11 +41,24 @@ export default function TransferenciaInicial({ navigation }) {
                     onChangeText={(e) => setChave(e)}
                 />
 
+                {/*aqui fica o valor da conta*/}
                 <View style={styles.containerSaldo}>
                     <Text style={styles.textSmall}>Saldo em conta</Text>
                     <View style={styles.right}>
-                        <Text style={styles.textSmall2}>R$ 1.300,00</Text>
-                        <Feather name="eye-off" size={15} color="#969696" />
+                        {mostrarSaldo && (
+                            <View style={styles.saldoContainer}>
+                                <Text style={styles.textSmall2}>R$ 1.300,00</Text>
+                            </View>
+                        )}
+
+                        {!mostrarSaldo && (
+                            <View style={styles.saldoOcultoContainer}>
+                                <Text style={styles.saldoOcultoTexto}></Text>
+                            </View>
+                        )}
+                        <TouchableOpacity onPress={toggleSaldo} style={styles.botaoToggle}>
+                            <Feather name={mostrarSaldo ? 'eye-off' : 'eye'} size={15} color="#969696" />
+                        </TouchableOpacity>
                     </View>
                 </View>
 
@@ -52,22 +71,22 @@ export default function TransferenciaInicial({ navigation }) {
                     <Text style={styles.textSmall}>Transferir para</Text>
                     <Text style={styles.textSmall}>Eliana Rocha</Text>
                 </View>
-                <TouchableOpacity style={{width: 50, height: 50, alignSelf: 'flex-end'}} onPress={revisar}>
-                        <LinearGradient
-                            colors={['#EEA243', '#C77DFF']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={{
-                                width: 50, 
-                                height: 50,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                borderRadius: 50,
-                            }}
-                        >
-                            <Feather name="arrow-right" size={25} color="#000" />
-                        </LinearGradient>
-                    </TouchableOpacity>
+                <TouchableOpacity style={{ width: 50, height: 50, alignSelf: 'flex-end' }} onPress={revisar}>
+                    <LinearGradient
+                        colors={['#EEA243', '#C77DFF']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={{
+                            width: 50,
+                            height: 50,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: 50,
+                        }}
+                    >
+                        <Feather name="arrow-right" size={25} color="#000" />
+                    </LinearGradient>
+                </TouchableOpacity>
             </View>
         </View>
     )

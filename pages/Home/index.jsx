@@ -10,9 +10,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import styles from "./styles";
 
-export default function Home({navigation}) {
+export default function Home({ navigation }) {
     const tranferir = () => {
-        navigation.navigate('Transferencia');
+        navigation.navigate('TransferenciaInicial');
     };
 
     const comprovantes = () => {
@@ -21,6 +21,12 @@ export default function Home({navigation}) {
 
     const extrato = () => {
         navigation.navigate('Extrato');
+    };
+
+    const [mostrarSaldo, setMostrarSaldo] = useState(true);
+
+    const toggleSaldo = () => {
+        setMostrarSaldo(!mostrarSaldo);
     };
 
     return (
@@ -38,16 +44,22 @@ export default function Home({navigation}) {
                 </View>
 
                 {/*aqui fica o valor da conta*/}
-                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 45 }}>
-                    <Text
-                        style={{
-                            color: '#fff',
-                            fontSize: 30,
-                            marginRight: 15,
-                            fontFamily: 'regular'
-                        }}
-                    >R$ 1.300,00</Text>
-                    <Feather name="eye-off" size={20} color="#C77DFF" />
+                <View style={styles.saldoRow}>
+                    {mostrarSaldo && (
+                        <View style={styles.saldoContainer}>
+                            <Text style={styles.saldoValor}>R$ 1.300,00</Text>
+                        </View>
+                    )}
+
+                    {!mostrarSaldo && (
+                        <View style={styles.saldoOcultoContainer}>
+                            <Text style={styles.saldoOcultoTexto}></Text>
+                        </View>
+                    )}
+
+                    <TouchableOpacity onPress={toggleSaldo} style={styles.botaoToggle}>
+                        <Feather name={mostrarSaldo ? 'eye-off' : 'eye'} size={20} color="#C77DFF" />
+                    </TouchableOpacity>
                 </View>
 
                 <Text
@@ -60,22 +72,24 @@ export default function Home({navigation}) {
 
                 <View style={styles.operations}>
                     <View style={styles.operationsChild}>
-                        <View style={styles.item}>
-                        <MaterialIcons name="compare-arrows" size={22} color="#fff" />
-                            <Text style={styles.textRegular}>Transferir</Text>
-                        </View>
+                        <TouchableOpacity onPress={tranferir}>
+                            <View style={styles.item}>
+                                <MaterialIcons name="compare-arrows" size={22} color="#fff" />
+                                <Text style={styles.textRegular}>Transferir</Text>
+                            </View>
+                        </TouchableOpacity>
                         <View style={styles.item2}>
-                        <MaterialIcons name="attach-money" size={22} color="#fff" />
+                            <MaterialIcons name="attach-money" size={22} color="#fff" />
                             <Text style={styles.textRegular}>Comprovantes</Text>
                         </View>
                     </View>
                     <View style={styles.operationsChild}>
                         <View style={styles.item2}>
-                        <MaterialCommunityIcons name="barcode" size={22} color="#fff" />
+                            <MaterialCommunityIcons name="barcode" size={22} color="#fff" />
                             <Text style={styles.textRegular}>Pagar</Text>
                         </View>
                         <View style={styles.item}>
-                        <MaterialCommunityIcons name="history" size={22} color="#fff" />
+                            <MaterialCommunityIcons name="history" size={22} color="#fff" />
                             <Text style={styles.textRegular}>Extrato</Text>
                         </View>
                     </View>

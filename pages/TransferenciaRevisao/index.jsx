@@ -17,7 +17,7 @@ export default function TransferenciaRevisao({ navigation }) {
         if (modal2Visible) {
             timer = setTimeout(() => {
                 navigation.navigate('TransferenciaComprovante');
-            }, 5000);
+            }, 3000);
         }
         return () => clearTimeout(timer);
     }, [modal2Visible]);
@@ -44,6 +44,12 @@ export default function TransferenciaRevisao({ navigation }) {
         navigation.navigate('TransferenciaComprovante');
     };
 
+    // mostrar e ocultar o saldo
+    const [mostrarSaldo, setMostrarSaldo] = useState(true);
+    const toggleSaldo = () => {
+        setMostrarSaldo(!mostrarSaldo);
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
@@ -58,8 +64,20 @@ export default function TransferenciaRevisao({ navigation }) {
                 <View style={styles.containerSaldo}>
                     <Text style={styles.textSmall}>Saldo em conta</Text>
                     <View style={styles.right}>
-                        <Text style={styles.textSmall2}>R$ 1.300,00</Text>
-                        <Feather name="eye-off" size={15} color="#969696" />
+                        {mostrarSaldo && (
+                            <View style={styles.saldoContainer}>
+                                <Text style={styles.textSmall2}>R$ 1.300,00</Text>
+                            </View>
+                        )}
+
+                        {!mostrarSaldo && (
+                            <View style={styles.saldoOcultoContainer}>
+                                <Text style={styles.saldoOcultoTexto}></Text>
+                            </View>
+                        )}
+                        <TouchableOpacity onPress={toggleSaldo} style={styles.botaoToggle}>
+                            <Feather name={mostrarSaldo ? 'eye-off' : 'eye'} size={15} color="#969696" />
+                        </TouchableOpacity>
                     </View>
                 </View>
 

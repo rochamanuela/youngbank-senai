@@ -31,14 +31,12 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         fontFamily: 'medium',
-        marginBottom: 10
+        marginBottom: -10
     },
     textMedium2: {
         color: '#fff',
         fontSize: 14,
         fontFamily: 'medium',
-        marginBottom: -15,
-        marginTop: -15
     },
     textSmall: {
         color: '#fff',
@@ -104,17 +102,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     containerSaldo: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-
-        width: '100%',
-        padding: 14,
-        borderColor: '#fff',
-        borderWidth: 1,
-        borderRadius: 8,
-        backgroundColor: '#232323',
-        marginTop: 16
+        flexDirection: 'column',
+        alignItems: 'left',
+        marginTop: 18,
+        gap: 5
     },
     containerAviso: {
         flexDirection: 'row',
@@ -129,7 +120,8 @@ const styles = StyleSheet.create({
     right: {
         display: 'flex',
         flexDirection: 'row',
-        gap: 10
+        gap: 10,
+        alignItems: 'center'
     },
     row: {
         flexDirection: 'row',
@@ -180,7 +172,7 @@ const styles = StyleSheet.create({
         height: 'auto'
     },
     saldoOcultoContainer: {
-        width: 80,
+        width: 120,
         height: 'auto',
         marginRight: 5,
         backgroundColor: '#2E2E2E',
@@ -188,8 +180,33 @@ const styles = StyleSheet.create({
     },
     saldoOcultoTexto: {
         color: '#fff',
-        fontSize: 12,
+        fontSize: 22,
+        fontFamily: 'medium',
+    },
+    textMediumSaldo: {
+        color: '#fff',
+        fontSize: 22,
+        fontFamily: 'medium',
+    },
+
+    // linha de cada transferência
+    containerTransferencia: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 18
+    },
+    containerValor: {
+        flexDirection: 'column',
+        gap: 2
+    },
+    textEnviado: {
         fontFamily: 'bold',
+        color: '#FF4E4E'
+    },
+    textRecebido: {
+        fontFamily: 'bold',
+        color: '#48BC84'
     }
 });
 

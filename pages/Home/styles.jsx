@@ -145,6 +145,31 @@ const styles = StyleSheet.create({
         marginTop: 30,
         justifyContent: 'center',
         paddingLeft: 16
+    },
+
+    // estilos do saldo
+    saldoValor: {
+        color: '#fff',
+        fontSize: 30,
+        marginRight: 15,
+        fontFamily: 'regular'
+    },
+    saldoRow: {
+        display: 'flex', 
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 45
+    },
+    saldoContainer: {
+        width: 'auto',
+        height: 40
+    },
+    saldoOcultoContainer: {
+        width: 168,
+        height: 40,
+        marginRight: 15,
+        backgroundColor: '#202020',
+        borderRadius: 8
     }
 });
 

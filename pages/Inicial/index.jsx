@@ -10,6 +10,9 @@ export default function Inicial({ navigation }) {
     const login = () => {
         navigation.navigate('Login');
     };
+    const criarConta = () => {
+        navigation.navigate('CadastroMenu');
+    };
 
     return (
         <ImageBackground
@@ -24,20 +27,20 @@ export default function Inicial({ navigation }) {
                     <View style={{ width: '55%' }}>
                         <LocalButton
                             text="Começar"
-                            onPress={() => alert('Botão clicado!')}
+                            onPress={criarConta}
                         />
                     </View>
                     <View style={styles.icon}><Icon name="apple" size={25} color="#fff" /></View>
                     <View style={styles.icon}><Icon name="google" size={25} color="#fff" /></View>
                 </View>
 
-                <View>
+                <View style={styles.row}>
                     <Text style={styles.link}>
                         Já possui uma conta?
-                        <TouchableOpacity onPress={login}>
-                            <Text style={styles.linkBold}> Fazer Login</Text>
-                        </TouchableOpacity>
                     </Text>
+                    <TouchableOpacity onPress={login}>
+                        <Text style={styles.linkBold}> Fazer Login</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </ImageBackground>

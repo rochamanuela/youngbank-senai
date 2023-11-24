@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { TextInput } from 'react-native';
 
-const CustomInput = ({ placeholderText }) => {
+const LocalInput = ({ placeholderText, valor, onChangeText, secureTextEntry }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -36,8 +36,11 @@ const CustomInput = ({ placeholderText }) => {
       onBlur={handleBlur}
       placeholder={placeholderText}
       placeholderTextColor="#777"
+      value={valor}
+      onChangeText={onChangeText}
+      secureTextEntry={secureTextEntry}
     />
   );
 };
 
-export default CustomInput;
+export default LocalInput;

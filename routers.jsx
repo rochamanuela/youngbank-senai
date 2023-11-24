@@ -11,6 +11,7 @@ import MensagemCadastro from "./pages/MensagemCadastro";
 import TransferenciaInicial from './pages/TransferenciaInicial';
 import TransferenciaRevisao from './pages/TransferenciaRevisao';
 import TransferenciaComprovante from './pages/TransferenciaComprovante';
+import Historico from './pages/Historico';
 
 import Teste from './pages/Teste';
 
@@ -21,14 +22,32 @@ export default function Routers() {
         <NavigationContainer>
             <Telas.Navigator>
                 <Telas.Screen
-                    name="Teste"
-                    component={Teste}
+                    name="Inicial"
+                    component={Inicial}
+                    options={{ headerShown: false }}
+                />
+                
+                <Telas.Screen
+                    name="Home"
+                    component={Home}
+                    options={{ headerShown: false }}
+                />
+
+                <Telas.Screen
+                    name="Historico"
+                    component={Historico}
                     options={{ headerShown: false }}
                 />
 
                 <Telas.Screen
                     name="TransferenciaInicial"
                     component={TransferenciaInicial}
+                    options={{ headerShown: false }}
+                />
+
+                <Telas.Screen
+                    name="Teste"
+                    component={Teste}
                     options={{ headerShown: false }}
                 />
 
@@ -43,7 +62,6 @@ export default function Routers() {
                     component={TransferenciaRevisao}
                     options={{ headerShown: false }}
                 />
-
 
                 <Telas.Screen
                     name="MensagemCadastro"
@@ -68,17 +86,7 @@ export default function Routers() {
                     options={{ headerShown: false }}
                 />
 
-                <Telas.Screen
-                    name="Home"
-                    component={Home}
-                    options={{ headerShown: false }}
-                />
 
-                <Telas.Screen
-                    name="Inicial"
-                    component={Inicial}
-                    options={{ headerShown: false }}
-                />
 
                 <Telas.Screen
                     name="Login"

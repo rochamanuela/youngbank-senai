@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     containerChild: {
         flex: 1,
         padding: '7.5%',
-        justifyContent: 'end',
+        justifyContent: 'flex-end',
         marginBottom: 30
     },
     containerRow: {
@@ -31,8 +31,6 @@ const styles = StyleSheet.create({
         color: '#B3B3B3',
         fontFamily: 'regular',
         fontSize: 12,
-        marginTop: 15,
-        alignSelf: 'flex-end'
     },
     linkBold: {
         color: '#fff',
@@ -47,6 +45,12 @@ const styles = StyleSheet.create({
         borderColor: '#fff',
         borderWidth: 1,
         marginRight: 10
+    },
+    row: {
+        marginTop: 15,
+        alignSelf: 'flex-end',
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 });
 
