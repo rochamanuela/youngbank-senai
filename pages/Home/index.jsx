@@ -23,6 +23,10 @@ export default function Home({ navigation }) {
         navigation.navigate('Extrato');
     };
 
+    const emprestimo = () => {
+        navigation.navigate('Emprestimo');
+    };
+
     const [mostrarSaldo, setMostrarSaldo] = useState(true);
 
     const toggleSaldo = () => {
@@ -103,10 +107,12 @@ export default function Home({ navigation }) {
                     <Text style={styles.textSmall}>Limite disponível</Text>
                     <Text style={styles.textMedium}>R$ 250,00</Text>
                 </View>
-                <View style={styles.card}>
-                    <FontAwesome name="money" size={25} color="#fff" />
-                    <Text style={styles.textRegular}>Solicitar Empréstimo</Text>
-                </View>
+                <TouchableOpacity onPress={emprestimo}>
+                    <View style={styles.card}>
+                        <FontAwesome name="money" size={25} color="#fff" />
+                        <Text style={styles.textRegular}>Solicitar Empréstimo</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         </View>
     )

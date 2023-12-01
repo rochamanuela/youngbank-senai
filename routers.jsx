@@ -12,6 +12,7 @@ import TransferenciaInicial from './pages/TransferenciaInicial';
 import TransferenciaRevisao from './pages/TransferenciaRevisao';
 import TransferenciaComprovante from './pages/TransferenciaComprovante';
 import Historico from './pages/Historico';
+import Emprestimo from './pages/Emprestimo';
 
 import Teste from './pages/Teste';
 
@@ -86,11 +87,15 @@ export default function Routers() {
                     options={{ headerShown: false }}
                 />
 
-
-
                 <Telas.Screen
                     name="Login"
                     component={Login}
+                    options={{ headerShown: false }}
+                />
+
+                <Telas.Screen
+                    name="Emprestimo"
+                    component={Emprestimo}
                     options={{ headerShown: false }}
                 />
 
