@@ -23,17 +23,23 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         gap: 0
     },
-
     textRegular: {
         color: '#fff',
         fontSize: 14,
         fontFamily: 'regular'
     },
+    textRegular2: {
+        color: '#fff',
+        fontSize: 14,
+        fontFamily: 'regular',
+        marginTop: 30
+    },
     textSmall: {
         color: '#fff',
         fontSize: 12,
         fontFamily: 'regular',
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 20
     },
     textMedium: {
         color: '#EEA243',

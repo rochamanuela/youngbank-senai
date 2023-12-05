@@ -54,10 +54,10 @@ export default function Emprestimo({navigation}) {
                         onPress={calcularJuros}
                     />
 
-                    <Text style={styles.textRegular}>
+                    <Text style={styles.textRegular2}>
                         Porcentagem dos juros que serão cobrados de acordo com número de parcelas que você solicitou
                     </Text>
-                    <Text style={styles.textMedium}>Valor</Text>
+                    <Text style={styles.textMedium}>10% de juros = R$ 125,00</Text>
 
                     <LocalButton
                         text="Solicitar Empréstimo"
