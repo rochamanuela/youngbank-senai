@@ -27,18 +27,18 @@ export default function Routers() {
                     component={Inicial}
                     options={{ headerShown: false }}
                 />
+
                 <Telas.Screen
                     name="Home"
                     component={Home}
                     options={{ headerShown: false }}
                 />
+
                 <Telas.Screen
                     name="Emprestimo"
                     component={Emprestimo}
                     options={{ headerShown: false }}
                 />
-
-
 
                 <Telas.Screen
                     name="Historico"
@@ -98,7 +98,6 @@ export default function Routers() {
                     component={Login}
                     options={{ headerShown: false }}
                 />
-
             </Telas.Navigator>
         </NavigationContainer>
     )

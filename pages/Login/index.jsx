@@ -5,12 +5,17 @@ import LocalButton from "../../components/LocalButton";
 import LocalInput from "../../components/LocalInput";
 import LocalAlert from "../../components/LocalAlert";
 
+import { useUser } from "../../UserContext";
+import axiosInstance from "../../services/axiosInstance";
+import { useDispatch } from 'react-redux'
+import { setToken } from '../../services/reducers/actions';
+
 import styles from "./styles";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-
+  const dispatch = useDispatch()
   const [isAlertVisible, setAlertVisible] = useState(false);
 
   const showAlert = () => {
@@ -21,16 +26,20 @@ export default function Login({ navigation }) {
     setAlertVisible(false);
   };
 
-  const entrar = () => {
-    if (email === '' || senha === '') {
-      alert('Por favor, preencha os dois campos.');
-    } else {
-      if (email === 'admin@gmail.com' && senha === 'senha123'){
-        navigation.navigate('Home');
-      }
-      else {
-        showAlert();
-      }
+  const entrar = async() => {
+    try {
+      const user = await axiosInstance.post('auth/token/login/', {
+        email: email,
+        password: senha
+      })   
+      console.log(user)
+      dispatch(setToken(user.data.auth_token))
+      navigation.navigate('Home')
+    } catch (error) {
+      console.log("entrou")
+      console.error(error)
+
+      showAlert();
     }
   }
 

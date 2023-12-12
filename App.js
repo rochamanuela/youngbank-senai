@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useCallback } from 'react';
 import { useFonts } from "expo-font";
 import Routers from "./routers";
+import { Provider } from 'react-redux'
+import { Store } from './services/reducers/store';
 
 export default function App() {
 
@@ -25,7 +27,11 @@ export default function App() {
     return null;
   }
 
-  return <Routers/>;
+  return (
+    <Provider store={Store}>
+      <Routers/>
+    </Provider>
+  )
 }
 
 const styles = StyleSheet.create({
