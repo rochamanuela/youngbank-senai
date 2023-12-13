@@ -37,32 +37,26 @@ export default function Home({ navigation }) {
             }, 1000)
             console.log(cliente.data)
         } catch (error) {
-
             console.log(error.response.data)
-
         }
     }
 
     const fetchDataCC = async () => {
         try {
-            const limite = await instance.get('cartao/',
+            const cartao = await axiosInstance.get('cartao/',
                 {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
                 }
             )
-            setDataCC(limite.data)
+            setDataCC(cartao.data)
             setTimeout(() => {
                 setLoading(false)
             }, 1000)
-
-            console.log(dataCC)
-            console.log(limite.data)
+            console.log(cartao.data)
         } catch (error) {
-            console.log(dataCC)
             console.log(error.response.data)
-
         }
 
     }
@@ -168,7 +162,7 @@ export default function Home({ navigation }) {
                     <View style={styles.credit}>
                         <Text style={styles.textRegular}>Cartão de crédito</Text>
                         <Text style={styles.textSmall}>Limite disponível</Text>
-                        <Text style={styles.textMedium}>R$ {dataCC[0].limite}</Text>
+                        <Text style={styles.textMedium}>R$ {dataCC.length > 0 ? dataCC[0].limite : 'N/A'}</Text>
                     </View>
                     <TouchableOpacity onPress={emprestimo}>
                         <View style={styles.card}>

@@ -45,11 +45,13 @@ const styles = StyleSheet.create({
         color: '#EEA243',
         fontSize: 16,
         fontFamily: 'medium',
-        marginTop: 30,
-        marginBottom: 15,
+        marginTop: 0,
+        marginBottom: 5,
     },
-
-
+    containerJuros: {
+        marginBottom: 20,
+        marginTop: 25,
+    },
     checkBoxContainer: {
         backgroundColor: 'transparent',
         borderWidth: 0,
