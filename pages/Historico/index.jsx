@@ -7,8 +7,43 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import LocalButton from "../../components/LocalButton";
 
 import styles from "./styles";
+import { useSelector } from "react-redux";
+import axiosInstance from "../../services/axiosInstance";
 
 export default function Historico({ navigation }) {
+    // carregamento do saldo
+    const [data, setData] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    const { token } = useSelector(state => {
+        return state.userReducer
+    })
+
+    const fetchData = async () => {
+        try {
+            const cliente = await axiosInstance.get('conta/',
+                {
+                    headers: {
+                        'Authorization': `Token ${token}`
+                    }
+                }
+            )
+            setData(cliente.data)
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000)
+            console.log(cliente.data)
+        } catch (error) {
+            console.log(error.response.data)
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    // outras áreas de ações
+
     const [modalVisible, setModalVisible] = useState(false);
     const [modal2Visible, setModal2Visible] = useState(false);
 
@@ -37,7 +72,7 @@ export default function Historico({ navigation }) {
     };
 
     const voltar = () => {
-        navigation.navigate('TransferenciaInicial');
+        navigation.navigate('Home');
     };
 
     const prosseguir = () => {
@@ -64,9 +99,9 @@ export default function Historico({ navigation }) {
                 <View style={styles.containerSaldo}>
                     <Text style={styles.textSmall}>Saldo em conta</Text>
                     <View style={styles.right}>
-                        {mostrarSaldo && (
+                        {data && data[0] && mostrarSaldo && (
                             <View style={styles.saldoContainer}>
-                                <Text style={styles.textMediumSaldo}>R$ 1.300,00</Text>
+                                <Text style={styles.textMediumSaldo}>R$ {data[0].saldo}</Text>
                             </View>
                         )}
 

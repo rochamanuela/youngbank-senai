@@ -8,7 +8,9 @@ import LocalButton from "../../components/LocalButton";
 
 import styles from "./styles";
 
-export default function TransferenciaComprovante({ navigation }) {
+export default function TransferenciaComprovante({ route, navigation }) {
+    const { valor } = route.params;
+
     const voltar = () => {
         navigation.navigate('Home');
     };
@@ -31,7 +33,7 @@ export default function TransferenciaComprovante({ navigation }) {
                     <MaterialIcons name="done" size={30} color="#fff" />
                     </View>
                     <Text style={styles.textSmall}>Transferência concluída</Text>
-                    <Text style={styles.textValue}>R$ 150,00</Text>
+                    <Text style={styles.textValue}>R$ {valor}</Text>
                 </View>
 
                 <View style={styles.line} />

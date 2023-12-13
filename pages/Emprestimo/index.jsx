@@ -58,8 +58,6 @@ export default function Emprestimo({ navigation }) {
             }, 1000)
             console.log(emprestimo.data)
 
-            console.log(user)
-            dispatch(setToken(user.data.auth_token))
         } catch (error) {
             console.log(error.response.data)
 
@@ -68,10 +66,6 @@ export default function Emprestimo({ navigation }) {
             showAlert();
         }
     }
-
-    useEffect(() => {
-        solicitarEprestimo()
-    }, [])
 
     return (
         <View style={styles.container}>

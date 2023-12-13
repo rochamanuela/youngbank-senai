@@ -8,7 +8,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
 import { useSelector } from "react-redux";
 import axiosInstance from "../../services/axiosInstance";
 import styles from "./styles";
@@ -71,12 +70,8 @@ export default function Home({ navigation }) {
         navigation.navigate('TransferenciaInicial');
     };
 
-    const comprovantes = () => {
-        navigation.navigate('Comprovantes');
-    };
-
     const extrato = () => {
-        navigation.navigate('Extrato');
+        navigation.navigate('Historico');
     };
 
     const emprestimo = () => {
@@ -139,20 +134,24 @@ export default function Home({ navigation }) {
                                     <Text style={styles.textRegular}>Transferir</Text>
                                 </View>
                             </TouchableOpacity>
-                            <View style={styles.item2}>
-                                <MaterialIcons name="attach-money" size={22} color="#fff" />
-                                <Text style={styles.textRegular}>Comprovantes</Text>
-                            </View>
+                            <TouchableOpacity onPress={extrato}>
+                                <View style={styles.item2}>
+                                    <MaterialIcons name="attach-money" size={22} color="#fff" />
+                                    <Text style={styles.textRegular}>Comprovantes</Text>
+                                </View>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.operationsChild}>
                             <View style={styles.item2}>
                                 <MaterialCommunityIcons name="barcode" size={22} color="#fff" />
                                 <Text style={styles.textRegular}>Pagar</Text>
                             </View>
-                            <View style={styles.item}>
-                                <MaterialCommunityIcons name="history" size={22} color="#fff" />
-                                <Text style={styles.textRegular}>Extrato</Text>
-                            </View>
+                            <TouchableOpacity onPress={extrato}>
+                                <View style={styles.item}>
+                                    <MaterialCommunityIcons name="history" size={22} color="#fff" />
+                                    <Text style={styles.textRegular}>Extrato</Text>
+                                </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.card}>

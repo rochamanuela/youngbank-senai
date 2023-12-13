@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
@@ -6,19 +6,53 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import LocalInput from "../../components/LocalInput";
 
 import styles from "./styles";
+import { useSelector } from "react-redux";
+import axiosInstance from "../../services/axiosInstance";
 
 export default function TransferenciaInicial({ navigation }) {
+    // carregamento do saldo
+    const [data, setData] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    const { token } = useSelector(state => {
+        return state.userReducer
+    })
+
+    const fetchData = async () => {
+        try {
+            const cliente = await axiosInstance.get('conta/',
+                {
+                    headers: {
+                        'Authorization': `Token ${token}`
+                    }
+                }
+            )
+            setData(cliente.data)
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000)
+            console.log(cliente.data)
+        } catch (error) {
+            console.log(error.response.data)
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    // outras áreas de ações
+    // campos para dados da transação
+    const [chave, setChave] = useState('')
+    const [valor, setValor] = useState('')
+    
     const cancel = () => {
         navigation.navigate('Home');
     };
 
     const revisar = () => {
-        navigation.navigate('TransferenciaRevisao');
+        navigation.navigate('TransferenciaRevisao', { valor });
     };
-
-    // campos para dados da transação
-    const [chave, setChave] = useState('')
-    const [valor, setValor] = useState('')
 
     // mostrar e ocultar o saldo
     const [mostrarSaldo, setMostrarSaldo] = useState(true);
@@ -45,9 +79,9 @@ export default function TransferenciaInicial({ navigation }) {
                 <View style={styles.containerSaldo}>
                     <Text style={styles.textSmall}>Saldo em conta</Text>
                     <View style={styles.right}>
-                        {mostrarSaldo && (
+                        {data && data[0] && mostrarSaldo && (
                             <View style={styles.saldoContainer}>
-                                <Text style={styles.textSmall2}>R$ 1.300,00</Text>
+                                <Text style={styles.textSmall2}>R$ {data[0].saldo}</Text>
                             </View>
                         )}
 
@@ -65,7 +99,7 @@ export default function TransferenciaInicial({ navigation }) {
                 <View style={styles.valorTransferencia}>
                     <TextInput
                         style={styles.inputValue}
-                        defaultValue="R$ 0,00"
+                        defaultValue="0.00"
                         onChangeText={(e) => setValor(e)}
                     />
                     <Text style={styles.textSmall}>Transferir para</Text>

@@ -7,16 +7,55 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import LocalButton from "../../components/LocalButton";
 
 import styles from "./styles";
+import { useSelector } from "react-redux";
+import axiosInstance from "../../services/axiosInstance";
 
-export default function TransferenciaRevisao({ navigation }) {
+export default function TransferenciaRevisao({ route, navigation }) {
+    // carregamento do saldo
+    const [data, setData] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    const { token } = useSelector(state => {
+        return state.userReducer
+    })
+
+    const fetchData = async () => {
+        try {
+            const cliente = await axiosInstance.get('conta/',
+                {
+                    headers: {
+                        'Authorization': `Token ${token}`
+                    }
+                }
+            )
+            setData(cliente.data)
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000)
+            console.log(cliente.data)
+        } catch (error) {
+            console.log(error.response.data)
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    // outras áreas de ações
+
     const [modalVisible, setModalVisible] = useState(false);
     const [modal2Visible, setModal2Visible] = useState(false);
+
+    const { valor } = route.params;
+    const [transferenciaRealizada, setTransferenciaRealizada] = useState(false);
 
     useEffect(() => {
         let timer;
         if (modal2Visible) {
             timer = setTimeout(() => {
-                navigation.navigate('TransferenciaComprovante');
+                setTransferenciaRealizada(true);
+                navigation.navigate('TransferenciaComprovante', {valor});
             }, 3000);
         }
         return () => clearTimeout(timer);
@@ -64,9 +103,9 @@ export default function TransferenciaRevisao({ navigation }) {
                 <View style={styles.containerSaldo}>
                     <Text style={styles.textSmall}>Saldo em conta</Text>
                     <View style={styles.right}>
-                        {mostrarSaldo && (
+                        {data && data[0] && mostrarSaldo && (
                             <View style={styles.saldoContainer}>
-                                <Text style={styles.textSmall2}>R$ 1.300,00</Text>
+                                <Text style={styles.textSmall2}>R$ {data[0].saldo}</Text>
                             </View>
                         )}
 
@@ -82,7 +121,7 @@ export default function TransferenciaRevisao({ navigation }) {
                 </View>
 
                 <View style={styles.valorTransferencia}>
-                    <Text style={styles.textValue}>R$ 150,00</Text>
+                    <Text style={styles.textValue}>R$ {valor}</Text>
                     <Text style={styles.textSmall}>Eliana Rocha</Text>
                 </View>
 
